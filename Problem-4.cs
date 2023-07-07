@@ -73,6 +73,11 @@ public class Program
         return true;
     }
 
+    public void PrintMessage(string message)
+    {
+        Console.WriteLine("Message: " + message);
+    }
+
     public static void Main(string[] args)
     {
         Console.Write("Enter the number: ");
@@ -97,5 +102,10 @@ public class Program
 
         Console.WriteLine("\nParameterized Object created using reflection: " + parameterizedObject.GetType().Name);
         Console.WriteLine("MyProperty value: " + parameterizedObject.MyProperty);
+
+        // Invoke a method using reflection
+        MethodInfo printMessageMethod = programType.GetMethod("PrintMessage", BindingFlags.Public | BindingFlags.Instance);
+        object[] methodArgs = new object[] { "Hello, World!" };
+        printMessageMethod.Invoke(parameterizedObject, methodArgs);
     }
 }
