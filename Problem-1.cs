@@ -60,6 +60,7 @@ public class Program
         }
         return true;
     }
+
     public static void Main(string[] args)
     {
         Console.Write("Enter the number: ");
@@ -67,5 +68,15 @@ public class Program
 
         int closestEvenNumber = FindClosestEvenNumber(N);
         Console.WriteLine("Closest even number: " + closestEvenNumber);
+
+        // Fetch all class members using reflection
+        Type programType = typeof(Program);
+        MemberInfo[] members = programType.GetMembers(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
+
+        Console.WriteLine("\nClass Members:");
+        foreach (MemberInfo member in members)
+        {
+            Console.WriteLine(member.Name + " - " + member.MemberType);
+        }
     }
 }
