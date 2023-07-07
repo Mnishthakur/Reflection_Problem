@@ -60,7 +60,6 @@ public class Program
         }
         return true;
     }
-
     public static void Main(string[] args)
     {
         Console.Write("Enter the number: ");
