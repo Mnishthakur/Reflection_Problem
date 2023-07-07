@@ -3,6 +3,18 @@ using System.Reflection;
 
 public class Program
 {
+    public int MyProperty { get; set; }
+
+    public Program()
+    {
+        // Default constructor
+    }
+
+    public Program(int value)
+    {
+        MyProperty = value;
+    }
+
     public static int FindClosestEvenNumber(int N)
     {
         string N_str = N.ToString();
@@ -78,5 +90,10 @@ public class Program
         {
             Console.WriteLine(member.Name + " - " + member.MemberType);
         }
+
+        // Create an empty object using reflection
+        Program emptyObject = (Program)Activator.CreateInstance(programType);
+
+        Console.WriteLine("\nEmpty Object created using reflection: " + emptyObject.GetType().Name);
     }
 }
