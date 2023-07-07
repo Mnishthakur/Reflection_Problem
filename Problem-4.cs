@@ -91,9 +91,11 @@ public class Program
             Console.WriteLine(member.Name + " - " + member.MemberType);
         }
 
-        // Create an empty object using reflection
-        Program emptyObject = (Program)Activator.CreateInstance(programType);
+        // Create a parameterized object using reflection
+        object[] constructorArgs = new object[] { 42 };
+        Program parameterizedObject = (Program)Activator.CreateInstance(programType, constructorArgs);
 
-        Console.WriteLine("\nEmpty Object created using reflection: " + emptyObject.GetType().Name);
+        Console.WriteLine("\nParameterized Object created using reflection: " + parameterizedObject.GetType().Name);
+        Console.WriteLine("MyProperty value: " + parameterizedObject.MyProperty);
     }
 }
